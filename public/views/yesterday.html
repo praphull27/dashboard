@@ -1,0 +1,45 @@
+<div class="container">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Yesterday Regression Details <BR> Date: {{headingTitle.date}}
+		</div>
+		<div class="panel-body">
+			<div class="row show-list">
+				<table ng-table="tableParams" show-filter="true" class="table">
+					<tr ng-repeat="module in $data">
+						<td data-title="'Name'" filter="{ 'name': 'text' }" class="name">
+							<a href="/module/{{module._id}}">{{module.name}}</a>
+						</td>
+						<td data-title="'Total'">
+							{{module.total}}
+						</td>
+						<td data-title="'Passed'" class="passed">
+							<a href="/module/{{module._id}}/passed" style="color: green; font-weight: bold;">{{module.passed}}</a>
+						</td>
+						<td data-title="'Failed'" class="failed">
+							<a href="/module/{{module._id}}/failed" style="color: red; font-weight: bold;">{{module.failed}}</a>
+						</td>
+						<td data-title="'Indeterminate'" class="indeterminate">
+							<a href="/module/{{module._id}}/indeterminate" style="color: purple; font-weight: bold;">{{module.indeterminate}}</a>
+						</td>
+						<td data-title="'Owner'" filter="{ 'owner': 'text' }">
+							{{module.owner}}
+						</td>
+						<td data-title="'Total Attrs'">
+							{{module.reg2AttrTotal}}
+						</td>
+						<td data-title="'Attrs Passed'">
+							{{module.reg2AttrPassed}}
+						</td>
+						<td data-title="'Attrs Failed'">
+							{{module.reg2AttrFailed}}
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

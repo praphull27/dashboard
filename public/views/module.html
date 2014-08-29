@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Module Name: {{headingTitle.name}} <BR> Date: {{headingTitle.date}} <BR> Owner: {{headingTitle.owner}} <BR> Status: {{headStatus}}
+		</div>
+		<div class="panel-body">
+			<div class="row show-list">
+				<table ng-table="tableParams" show-filter="true" class="table" class="name">
+					<tr ng-repeat="test in $data">
+						<td data-title="'Name'" filter="{ 'name': 'text' }">
+							{{test.name}}
+						</td>
+						<td data-title="'Status'" filter="{ 'status': 'text' }">
+							{{test.status}}
+						</td>
+						<td data-title="'Runtime'">
+							{{test.runtime}}
+						</td>
+						<td data-title="'Seed'">
+							{{test.seed}}
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

@@ -1,0 +1,34 @@
+<div class="container">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			{{headingTitle}}
+		</div>
+		<div class="panel-body">
+			<div class="row show-list">
+				<!--<p><strong>Filter:</strong> {{tableParams.filter()|json}}</p>-->
+				<table ng-table="tableParams" show-filter="true" class="table">
+					<tr ng-repeat="date in $data">
+						<td data-title="'Date'" filter="{ 'name': 'text' }" class="name">
+							<a href="/date/{{date.name}}">{{date.name}}</a>
+						</td>
+						<td data-title="'Total'">
+							{{date.total}}
+						</td>
+						<td data-title="'Passed'" class="passed">
+							{{date.passed}}
+						</td>
+						<td data-title="'Failed'" class="failed">
+							{{date.failed}}
+						</td>
+						<td data-title="'Indeterminate'" class="indeterminate">
+							{{date.indeterminate}}
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
