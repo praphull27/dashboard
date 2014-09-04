@@ -8,7 +8,7 @@
 				<table ng-table="tableParams" show-filter="true" class="table" class="name">
 					<tr ng-repeat="test in $data">
 						<td data-title="'Name'" filter="{ 'name': 'text' }" style="font-weight: bold;">
-							<a href="http://savbu-asic/cgi-bin/disp_file.cgi?f={{test.buildLog.path}}" target="_blank" style="target-new: tab;">{{test.name}}</a>
+							<a href="http://savbu-asic/cgi-bin/disp_file.cgi?f={{test.simulationLog.path}}" target="_blank" style="target-new: tab;">{{test.name}}</a>
 						</td>
 						<td data-title="'Status'" filter="{ 'status': 'text' }" style="font-weight: bold;">
 							<a href="http://savbu-asic/cgi-bin/disp_file.cgi?f={{test.simulationLog.path}}" target="_blank" style="target-new: tab;"><span ng-class="{'passed': test.status == 'passed', 'failed': test.status == 'failed', 'indeterminate': test.status =='indeterminate'}">{{test.status}}</span></a>
