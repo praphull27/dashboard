@@ -172,10 +172,6 @@ exports.getTestsByStatus = function(status, callback) {
 	});
 };
 
-exports.getTestsByNameAndStatus = function() {};
-
-exports.getTestByModuleAndName = function() {};
-
 exports.getStatusCountByModule = function(module, callback) {
 	module = module.toJSON();
 	return db.Test.count({

@@ -15,6 +15,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/yesterday', express.static(path.join(__dirname, 'public')));
+app.use('/latest', express.static(path.join(__dirname, 'public')));
+app.use('/archive', express.static(path.join(__dirname, 'public')));
+app.use('/date/:date', express.static(path.join(__dirname, 'public')));
+app.use('/module/:id', express.static(path.join(__dirname, 'public')));
+app.use('/module/:id/:status', express.static(path.join(__dirname, 'public')));
 
 app.get('/api/getLatestDate', function(req, res, next) {
 	core.getLatestDate(function(err, date) {

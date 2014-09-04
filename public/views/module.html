@@ -7,11 +7,17 @@
 			<div class="row show-list">
 				<table ng-table="tableParams" show-filter="true" class="table" class="name">
 					<tr ng-repeat="test in $data">
-						<td data-title="'Name'" filter="{ 'name': 'text' }">
-							{{test.name}}
+						<td data-title="'Name'" filter="{ 'name': 'text' }" style="font-weight: bold;">
+							<a href="http://savbu-asic/cgi-bin/disp_file.cgi?f={{test.buildLog.path}}" target="_blank" style="target-new: tab;">{{test.name}}</a>
 						</td>
-						<td data-title="'Status'" filter="{ 'status': 'text' }">
-							{{test.status}}
+						<td data-title="'Status'" filter="{ 'status': 'text' }" style="font-weight: bold;">
+							<a href="http://savbu-asic/cgi-bin/disp_file.cgi?f={{test.simulationLog.path}}" target="_blank" style="target-new: tab;"><span ng-class="{'passed': test.status == 'passed', 'failed': test.status == 'failed', 'indeterminate': test.status =='indeterminate'}">{{test.status}}</span></a>
+						</td>
+						<td data-title="'Build'">
+							<a href="http://savbu-asic/cgi-bin/disp_file.cgi?f={{test.buildLog.path}}" target="_blank" style="target-new: tab;"><span style="color: red;" ng-class="{'error': test.buildLog.errors == 0}">Errors={{test.buildLog.errors}}</span><span ng-class="{'warn': test.buildLog.errors > 0}">Warnings={{test.buildLog.warnings}}</span></a>
+						</td>
+						<td data-title="'Simulation'">
+							<a href="http://savbu-asic/cgi-bin/disp_file.cgi?f={{test.simulationLog.path}}" target="_blank" style="target-new: tab;"><span style="color: red;" ng-class="{'error': test.simulationLog.errors == 0}">Errors={{test.simulationLog.errors}}</span><span ng-class="{'warn': test.simulationLog.errors > 0}">Warnings={{test.simulationLog.warnings}}</span></a>
 						</td>
 						<td data-title="'Runtime'">
 							{{test.runtime}}
