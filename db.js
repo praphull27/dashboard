@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-mongoose.connect("mongodb://dsw-vnc-016.cisco.com:27017/bodega");
+mongoose.connect("mongodb://localhost/bodega");
 
 exports.Module = mongoose.model("Module", {
 	name: String,

@@ -23,6 +23,14 @@ angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mg
 		templateUrl: 'views/module.html',
 		controller: 'ModuleCtrl'
 	})
+	.when('/modules', {
+		templateUrl: 'views/modules.html',
+		controller: 'ModulesCtrl'
+	})
+	.when('/modules/:name*', {
+		templateUrl: 'views/modulesByName.html',
+		controller: 'ModuleByNameCtrl'
+	})
 	.when('/date/:date', {
 		templateUrl: 'views/date.html',
 		controller: 'DateCtrl'

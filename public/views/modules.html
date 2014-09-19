@@ -1,0 +1,20 @@
+<div class="container">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			{{headingTitle}}
+		</div>
+		<div class="panel-body">
+			<div class="row show-list">
+				<div loading-container="tableParams.settings().$loading">
+					<table ng-table="tableParams" show-filter="true" class="table">
+						<tr ng-repeat="module in $data">
+							<td data-title="'Module Name'" filter="{ 'name': 'text' }" class="name">
+								<a href="/modules/{{module.name}}">{{module.name}}</a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

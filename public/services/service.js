@@ -33,4 +33,12 @@ angular.module('MyApp')
 
 .factory('getYesterdayModules', ['$resource', function($resource) {
 	return $resource('/api/getYesterdayModules');
+}])
+
+.factory('getAllModules', ['$resource', function($resource) {
+	return $resource('/api/getAllModules');
+}])
+
+.factory('getModulesByName', ['$resource', function($resource) {
+	return $resource('/api/getModulesByName/:name');
 }]);

@@ -95,7 +95,7 @@ angular.module('MyApp')
 
 .controller('ArchiveCtrl', ['$scope', '$timeout', '$filter', 'ngTableParams', 'getArchive', function($scope, $timeout, $filter, ngTableParams, getArchive) {
 	var data = getArchive.query();
-	$scope.headingTitle = "Archive Results";
+	$scope.headingTitle = "Archive By Date";
 	$scope.tableParams = new ngTableParams({
 		page: 1,            // show first page
 		count: 50,          // count per page
@@ -116,4 +116,49 @@ angular.module('MyApp')
 			}, 3500);
 		}
 	});
+}])
+
+.controller('ModulesCtrl', ['$scope', '$filter', 'ngTableParams', 'getAllModules', function($scope, $filter, ngTableParams, getAllModules) {
+	var data = getAllModules.query();
+	$scope.headingTitle = "Archive By Module";
+	$scope.tableParams = new ngTableParams({
+		page: 1,            // show first page
+		count: 50,          // count per page
+		filter: {
+			name: ''       // initial filter
+		}
+	}, {
+		total: data.length, // length of data
+		getData: function($defer, params) {
+			var orderedData = params.filter() ?
+			$filter('filter')(data, params.filter()) :
+			data;
+			$scope.modules = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+			params.total(orderedData.length); // set total for recalc pagination
+			$defer.resolve($scope.modules);
+		}
+	});
+}])
+
+.controller('ModuleByNameCtrl', ['$scope', '$routeParams', '$filter', 'ngTableParams', 'getModulesByName', function($scope, $routeParams, $filter, ngTableParams, getModulesByName) {
+	var data = getModulesByName.query({name: $routeParams.name});
+	$scope.headingTitle = $routeParams.name;
+	$scope.tableParams = new ngTableParams({
+		page: 1,            // show first page
+		count: 50,          // count per page
+		filter: {
+			date: ''       // initial filter
+		}
+	}, {
+		total: data.length, // length of data
+		getData: function($defer, params) {
+			var orderedData = params.filter() ?
+			$filter('filter')(data, params.filter()) :
+			data;
+			$scope.modules = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+			params.total(orderedData.length); // set total for recalc pagination
+			$defer.resolve($scope.modules);
+		}
+	});
 }]);
+

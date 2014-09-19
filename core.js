@@ -69,7 +69,7 @@ exports.getModuleById = function(moduleId, callback) {
 exports.getModulesByName = function(name, callback) {
 	return db.Module.find({
 		name: name
-	}, function(err, modules) {
+	}).sort({date: -1}).exec(function(err, modules) {
 		if (err != null) {
 			return callback(err);
 		}

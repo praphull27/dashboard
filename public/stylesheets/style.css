@@ -4705,3 +4705,56 @@ em {
     float: left; }
     .navbar-nav > li > a {
       padding: 15px; }
+
+.total {
+  font-weight: bold; }
+
+.passed {
+  color: green;
+  font-weight: bold; }
+
+.failed {
+  color: red;
+  font-weight: bold; }
+
+.indeterminate {
+  color: purple;
+  font-weight: bold; }
+
+.name {
+  font-weight: bold; }
+
+td {
+  border: 1px solid #ddd; }
+
+.ng-table .passed {
+  color: green; }
+
+.ng-table .indeterminate {
+  color: purple; }
+
+.ng-table .failed {
+  color: red; }
+
+.ng-table .error {
+  display: none; }
+
+.ng-table .warn {
+  display: none; }
+
+.loading-container {
+  position: relative; }
+
+.loading-container .loading:before, .loading-container .loading:after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 50px;
+  min-width: 50px; }
+
+.loading-container .loading:before {
+  background-color: white;
+  opacity: 0.5; }

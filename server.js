@@ -21,6 +21,8 @@ app.use('/archive', express.static(path.join(__dirname, 'public')));
 app.use('/date/:date', express.static(path.join(__dirname, 'public')));
 app.use('/module/:id', express.static(path.join(__dirname, 'public')));
 app.use('/module/:id/:status', express.static(path.join(__dirname, 'public')));
+app.use('/modules', express.static(path.join(__dirname, 'public')));
+app.use('/modules/:name*', express.static(path.join(__dirname, 'public')));
 
 app.get('/api/getLatestDate', function(req, res, next) {
 	core.getLatestDate(function(err, date) {
@@ -135,6 +137,34 @@ app.get('/api/getModulesByDate/:date', function(req, res, next) {
 	});
 });
 
+app.get('/api/getAllModules', function(req, res, next) {
+	core.getAllModules(function(err, modules) {
+		if (err) return next(err);
+		modules.sort();
+		async.map(modules, function(mod, callback) {
+			callback(null, {name: mod});
+		}, function(err, mods) {
+			return res.send(mods);
+		});
+	});
+});
+
+app.get('/api/getModulesByName/:name*', function(req, res, next) {
+	core.getModulesByName(req.params.name, function(err, modules) {
+		if (err) return next(err);
+		async.map(modules, function(module, callback) {
+			return core.getStatusCountByModule(module, function(err, mod) {
+				if (err == null) {
+					return callback(null, mod);
+				} else {
+					return callback(err);
+				}
+			});
+		}, function(err, mods) {
+			return res.send(mods);
+		});
+	});
+});
 
 app.listen(app.get('port'), function() {
 	console.log('Express server listening on port ' + app.get('port'));
